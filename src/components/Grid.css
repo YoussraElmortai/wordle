@@ -1,0 +1,28 @@
+
+
+.grid{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+}
+
+.row{
+    display: flex;
+    gap: 5px;
+}
+
+.cell{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 62px;
+    height: 62px;
+    border: 2px solid  #b8b8b8;
+    border-radius: 0.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #b8b8b8;
+}
