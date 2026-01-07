@@ -24,7 +24,7 @@
     color: white;
     flex: 1;
     text-transform: uppercase;
-    tranistion: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 
     &:hover{
         background-color: greenyellow;
