@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 // components
 import Grid from "./components/Grid";
-import Keyboard from "./components/keyboard";
+import Keyboard from "./components/Keyboard";
 
 
 
