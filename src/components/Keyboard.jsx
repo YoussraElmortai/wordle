@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "./Keyboard.css";
 
 const KEYBOARDS_ROWS = [
@@ -7,6 +8,29 @@ const KEYBOARDS_ROWS = [
 ];
 
 const Keyboard = ({ onKeyPress }) => {
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      const key = event.key;
+      if (key === "Backspace" || key === "Enter" || /^[a-z]$/.test(key.toLowerCase())) {
+        event.preventDefault();
+        onKeyPress(key.toUpperCase());
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onKeyPress]); 
+
+  const handleClick = (key) => {
+    if (key === "Enter") {
+      onKeyPress("ENTER");
+    } else if (key === "Backspace") {
+      onKeyPress("BACKSPACE");
+    } else {
+      onKeyPress(key.toUpperCase());
+    }
+  };
+
   return (
     <div className='keyboard'>
       {KEYBOARDS_ROWS.map((row, rowIndex) => {
@@ -15,6 +39,8 @@ const Keyboard = ({ onKeyPress }) => {
             {row.map((key) => {
               return (
                 <button
+                  key={key}
+                  onClick={() => handleClick(key)}
                   className={`keyboard-key ${
                     key === "Backspace" || key === "Enter"
                       ? "keyboard-key-wide"

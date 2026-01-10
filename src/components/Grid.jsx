@@ -2,10 +2,15 @@ import "./Grid.css";
 
 const rows = 6;
 const cols = 5;
-// cols are equal to the letters in the word
 
-const Grid = ({ guesses }) => {
-  const currentGuesses = guesses || Array(rows).fill("");
+const Grid = ({ guesses, currentGuess }) => {
+  const allGuesses = [...guesses];
+  if (currentGuess) {
+    allGuesses.push(currentGuess);
+  }
+  while (allGuesses.length < rows) {
+    allGuesses.push("");
+  }
 
   return (
     <div className='grid'>
@@ -17,8 +22,7 @@ const Grid = ({ guesses }) => {
               {Array(cols)
                 .fill()
                 .map((_, colIndex) => {
-                  const letter =
-                    currentGuesses[rowIndex]?.[colIndex];
+                  const letter = allGuesses[rowIndex]?.[colIndex];
                   return (
                     <div
                       key={`${rowIndex}-${colIndex}`}
