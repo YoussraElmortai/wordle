@@ -24,13 +24,24 @@
     color: white;
     flex: 1;
     text-transform: uppercase;
-    transition: all 0.2s ease-in-out;
-
-    &:hover{
-        background-color: greenyellow;
-        inset: 5%;
-        
-    }
 }
 
-.keyboard-key-wide {}
+.keyboard-key-wide {
+    flex: 1.5;
+    font-size: 12px;
+}
+
+.keyboard-key.correct {
+    background-color: #658f26;
+    border-color: #658f26;
+}
+
+.keyboard-key.absent {
+    background-color: #585858;
+    border-color: #585858;
+}
+
+.keyboard-key.present {
+    background-color: #b8ad4d;
+    border-color: #b8ad4d;
+}

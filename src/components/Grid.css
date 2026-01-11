@@ -1,6 +1,4 @@
-
-
-.grid{
+.grid {
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -8,21 +6,55 @@
     padding: 10px;
 }
 
-.row{
+.row {
     display: flex;
     gap: 5px;
 }
 
-.cell{
+.cell {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 62px;
     height: 62px;
-    border: 2px solid  #b8b8b8;
+    border: 2px solid #b8b8b8;
     border-radius: 0.5rem;
     font-size: 2rem;
     font-weight: bold;
     text-transform: uppercase;
-    color: #b8b8b8;
+    color: #d8d7d7;
+    transition: background 0.1s ease-out;
+}
+
+.cell-correct {
+    background-color: #658f26;
+    border-color: #658f26;
+}
+
+.cell-absent {
+    background-color: #585858;
+    border-color: #585858;
+}
+
+.cell-present {
+    background-color: #b8ad4d;
+    border-color: #b8ad4d;
+}
+
+.cell:not(:empty) {
+    animation: pop 0.1s ease-in;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }

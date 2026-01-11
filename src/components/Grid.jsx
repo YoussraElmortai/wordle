@@ -1,9 +1,10 @@
+import { getLetterStates } from "../utils";
 import "./Grid.css";
 
 const rows = 6;
 const cols = 5;
 
-const Grid = ({ guesses, currentGuess }) => {
+const Grid = ({ guesses, currentGuess, solution }) => {
   const allGuesses = [...guesses];
   if (currentGuess) {
     allGuesses.push(currentGuess);
@@ -17,16 +18,21 @@ const Grid = ({ guesses, currentGuess }) => {
       {Array(rows)
         .fill()
         .map((_, rowIndex) => {
+          const isComplete = guesses.length > rowIndex;
+          const states = isComplete
+            ? getLetterStates(allGuesses[rowIndex], solution)
+            : Array(5).fill(" ");
           return (
             <div key={rowIndex} className='row'>
               {Array(cols)
                 .fill()
                 .map((_, colIndex) => {
                   const letter = allGuesses[rowIndex]?.[colIndex];
+                  const letterState = states[colIndex];
                   return (
                     <div
                       key={`${rowIndex}-${colIndex}`}
-                      className='cell'
+                      className={`cell cell-${letterState}`}
                     >
                       {letter}
                     </div>

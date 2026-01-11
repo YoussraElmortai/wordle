@@ -7,11 +7,15 @@ const KEYBOARDS_ROWS = [
   ["Enter", "Z", "X", "C", "V", "B", "N", "M", "Backspace"],
 ];
 
-const Keyboard = ({ onKeyPress }) => {
+const Keyboard = ({ keyboardStates, onKeyPress }) => {
   useEffect(() => {
     const handleKeyDown = (event) => {
       const key = event.key;
-      if (key === "Backspace" || key === "Enter" || /^[a-z]$/.test(key.toLowerCase())) {
+      if (
+        key === "Backspace" ||
+        key === "Enter" ||
+        /^[a-z]$/.test(key.toLowerCase())
+      ) {
         event.preventDefault();
         onKeyPress(key.toUpperCase());
       }
@@ -19,7 +23,7 @@ const Keyboard = ({ onKeyPress }) => {
     window.addEventListener("keydown", handleKeyDown);
 
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [onKeyPress]); 
+  }, [onKeyPress]);
 
   const handleClick = (key) => {
     if (key === "Enter") {
@@ -37,6 +41,10 @@ const Keyboard = ({ onKeyPress }) => {
         return (
           <div key={rowIndex} className='keyboard-row'>
             {row.map((key) => {
+              const state =
+                key.length === 1
+                  ? keyboardStates[key.toLocaleLowerCase()]
+                  : "";
               return (
                 <button
                   key={key}
@@ -45,7 +53,7 @@ const Keyboard = ({ onKeyPress }) => {
                     key === "Backspace" || key === "Enter"
                       ? "keyboard-key-wide"
                       : ""
-                  }`}
+                  }${state}`}
                 >
                   {key === "Backspace" ? "⌫" : key}
                 </button>
