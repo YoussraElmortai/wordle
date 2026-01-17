@@ -14,7 +14,7 @@ const Grid = ({ guesses, currentGuess, solution }) => {
   }
 
   return (
-    <div className='grid'>
+    <section className='grid'>
       {Array(rows)
         .fill()
         .map((_, rowIndex) => {
@@ -41,7 +41,7 @@ const Grid = ({ guesses, currentGuess, solution }) => {
             </div>
           );
         })}
-    </div>
+    </section>
   );
 };
 

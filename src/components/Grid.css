@@ -42,7 +42,7 @@
 }
 
 .cell:not(:empty) {
-    animation: pop 0.1s ease-in;
+    animation: pop 0.2s ease-out;
 }
 
 @keyframes pop {

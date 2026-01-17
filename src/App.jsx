@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 // components
 import Grid from "./components/Grid";
 import Keyboard from "./components/Keyboard";
@@ -31,8 +30,24 @@ function App() {
 
   return (
     <div className='app'>
-      <Grid guesses={guesses} currentGuess={currentGuess} solution ={solution} />
-      <Keyboard onKeyPress={handleKeyPress}  keyboardStates={keyboardStates}/>
+      <h1>Wordle</h1>
+      <article>
+        <h2>Rules</h2>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </article>
+      <Grid
+        guesses={guesses}
+        currentGuess={currentGuess}
+        solution={solution}
+      />
+      <Keyboard
+        onKeyPress={handleKeyPress}
+        keyboardStates={keyboardStates}
+      />
     </div>
   );
 }

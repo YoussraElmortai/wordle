@@ -4,7 +4,6 @@
     gap: 8px;
     padding: 0 8px;
     width: 100%;
-    margin: 0 auto;
 }
 
 .keyboard-row {
@@ -20,7 +19,7 @@
     border: 0;
     height: 58px;
     cursor: pointer;
-    background-color: #b8b8b8;
+    background-color: #8c8787;
     color: white;
     flex: 1;
     text-transform: uppercase;

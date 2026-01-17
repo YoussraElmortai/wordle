@@ -36,7 +36,7 @@ const Keyboard = ({ keyboardStates, onKeyPress }) => {
   };
 
   return (
-    <div className='keyboard'>
+    <section className='keyboard'>
       {KEYBOARDS_ROWS.map((row, rowIndex) => {
         return (
           <div key={rowIndex} className='keyboard-row'>
@@ -62,7 +62,7 @@ const Keyboard = ({ keyboardStates, onKeyPress }) => {
           </div>
         );
       })}
-    </div>
+    </section>
   );
 };
 
