@@ -31,14 +31,6 @@ function App() {
   return (
     <div className='app'>
       <h1>Wordle</h1>
-      <article>
-        <h2>Rules</h2>
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </article>
       <Grid
         guesses={guesses}
         currentGuess={currentGuess}
