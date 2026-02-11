@@ -9,6 +9,7 @@ function App() {
   const [guesses, setGuesses] = useState([]);
   const [currentGuess, setCurrentGuess] = useState("");
   const [solution, setSolution] = useState("");
+  const [isGameOver, setIsGameOver] = useState(false);
 
   useEffect(() => {
     const getSolution = async () => {
@@ -19,6 +20,8 @@ function App() {
     getSolution();
   }, []);
 
+  console.log(solution);
+
   const handleKeyPress = (key) => {
     if (guesses.length === 6) {
       return;
@@ -28,6 +31,22 @@ function App() {
       if (currentGuess.length === 5) {
         setGuesses([...guesses, currentGuess]);
         setCurrentGuess("");
+
+        if (currentGuess === solution) {
+          setTimeout(() => {
+            alert(`you won the word was ${solution}`);
+          }, 1000);
+          setIsGameOver(true);
+        } else if (guesses.length === 5) {
+          setTimeout(() => {
+            alert(`you lost the word was ${solution}`);
+          }, 1000);
+          setIsGameOver(true);
+        }
+
+        // if (currentGuess === "cunty") {
+        //   alert("you won");
+        // }
       }
     } else if (key === "BACKSPACE") {
       setCurrentGuess((prev) => prev.slice(0, -1));
@@ -47,6 +66,7 @@ function App() {
         solution={solution}
       />
       <Keyboard
+        isGameOver={isGameOver}
         onKeyPress={handleKeyPress}
         keyboardStates={keyboardStates}
       />

@@ -7,31 +7,37 @@ const KEYBOARDS_ROWS = [
   ["Enter", "Z", "X", "C", "V", "B", "N", "M", "Backspace"],
 ];
 
-const Keyboard = ({ keyboardStates, onKeyPress }) => {
+const Keyboard = ({ isGameOver, keyboardStates, onKeyPress }) => {
   useEffect(() => {
     const handleKeyDown = (event) => {
-      const key = event.key;
-      if (
-        key === "Backspace" ||
-        key === "Enter" ||
-        /^[a-z]$/.test(key.toLowerCase())
-      ) {
-        event.preventDefault();
-        onKeyPress(key.toUpperCase());
+      if (!isGameOver) {
+        const key = event.key;
+
+        if (
+          key === "Backspace" ||
+          key === "Enter" ||
+          /^[a-z]$/.test(key.toLowerCase())
+        ) {
+          event.preventDefault();
+          onKeyPress(key.toUpperCase());
+        }
       }
     };
+
     window.addEventListener("keydown", handleKeyDown);
 
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [onKeyPress]);
+  }, [isGameOver, onKeyPress]);
 
   const handleClick = (key) => {
-    if (key === "Enter") {
-      onKeyPress("ENTER");
-    } else if (key === "Backspace") {
-      onKeyPress("BACKSPACE");
-    } else {
-      onKeyPress(key.toUpperCase());
+    if (!isGameOver) {
+      if (key === "Enter") {
+        onKeyPress("ENTER");
+      } else if (key === "Backspace") {
+        onKeyPress("BACKSPACE");
+      } else {
+        onKeyPress(key.toUpperCase());
+      }
     }
   };
 
