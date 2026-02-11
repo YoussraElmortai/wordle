@@ -20,8 +20,6 @@ function App() {
     getSolution();
   }, []);
 
-  console.log(solution);
-
   const handleKeyPress = (key) => {
     if (guesses.length === 6) {
       return;
@@ -41,12 +39,8 @@ function App() {
           setTimeout(() => {
             alert(`you lost the word was ${solution}`);
           }, 1000);
-          setIsGameOver(true);
+          setIsGameOver(false);
         }
-
-        // if (currentGuess === "cunty") {
-        //   alert("you won");
-        // }
       }
     } else if (key === "BACKSPACE") {
       setCurrentGuess((prev) => prev.slice(0, -1));
